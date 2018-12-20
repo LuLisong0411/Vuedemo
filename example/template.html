@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 实例2.0</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>hello world 实例</h1>
+    <hr>
+    <div id="app">
+        {{message}}
+    </div>
+    <!-- 第二种模板：切完图就放在template里可以直接用 -->
+    <!-- <template id="dd2">
+        <h2 style="color:red" >我是template标签模板</h2>
+    </template> -->
+
+    <!-- 第三种模板：可以引入外部文件形成一个模板 -->
+    <script type="x-template" id="dd3">
+        <h2 style="color:red" >我是Script标签模板</h2>
+    </script>
+    <script> 
+        var app = new Vue({
+        el:'#app',
+        data:{
+            message:'hello world!'
+        },
+        // template:"#dd2"
+        template:"#dd3"
+        //第一种模板:适合很小的组件
+        // template:`<h2 style="color:red">我是选项模板</h2>`
+    }) 
+    </script>
+</body>
+
+</html>
