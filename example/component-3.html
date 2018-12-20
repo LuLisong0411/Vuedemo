@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component组件1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件1</h1>
+    <hr>
+    <div id="app">
+        <rousong></rousong>
+    </div>
+   
+    <script>
+       var city = {
+            template:`<div style="color:red">I'm form guizhou</div>`
+       };
+       var rousongComponent = {
+            template:`<div style="color:blue">
+                <p>I'm form guizhou</p>
+                <city></city>
+                </div>
+            `,
+            components:{
+                "city":city
+            }
+        };
+        var app = new Vue({
+            el:'#app',
+            components:{
+                "rousong":rousongComponent
+            }
+    }) 
+    </script>
+</body>
+
+</html>
