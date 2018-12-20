@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component组件1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件1</h1>
+    <hr>
+    <div id="app">
+        <rousong here="guizhou"></rousong>
+    </div>
+    
+    <div>
+        <h3>自定义属性传值注意点</h3>
+        <p>1.正常写法在prpos数组与插值方式里正常写。</p>
+        <p>2.自定义属性里带‘-’的在props数组和插值方式里要用驼峰式写法。</p>
+        <p>3.不是直接传值，与后台传值时需要v-bind绑定数据源。</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            components:{
+                "rousong":{
+                    template:`<div style="color:blue">I'm from {{here}}</div>`,
+                    props:['here']
+                }
+            }
+    }) 
+    </script>
+    <div id="newapp">
+        <lulisong :there="address"></lulisong>
+    </div>
+    <script>
+        var newapp = new Vue({
+            el:'#newapp',
+            data:{
+                address:'haerbin'
+            },
+            components:{
+                "lulisong":{
+                    template:`<div style="color:red">I'm live in {{there}}</div>`,
+                    props:['there']
+                }
+            }
+    }) 
+    </script>
+</body>
+
+</html>

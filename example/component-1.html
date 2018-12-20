@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component组件1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component组件1</h1>
+    <hr>
+    <div id="app">
+        <rousong1></rousong1>
+        <rousong2></rousong2>
+    </div>
+    <div>
+        <h3>指令与组件的区别</h3>
+        <p>1.指令是在标签里定义属性。</p>
+        <p>2.组件是自定义一个标签，比指令的功能强大。</p>
+    </div>
+    <script>
+        // 全局组件
+        Vue.component('rousong1',{
+            template:`<div style="color:red">我是全局rousong1组件</div>`
+        })
+        var app = new Vue({
+            el:'#app',
+            components:{
+                "rousong2":{
+                    template:`<div style="color:blue">我是局部rousong2组件</div>`
+                }
+            }
+    }) 
+    </script>
+</body>
+
+</html>
