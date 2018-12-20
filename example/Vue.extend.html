@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.extend扩展构造器实例</title>
+    <script src="../assets/js/vue.js"> </script>
+</head>
+<body>
+    <h1>Vue.extend扩展构造器实例</h1>
+    <hr>
+    <LuLisong></LuLisong>
+    <div id="LuLisong"></div>
+  <script>
+        var LuLisongURL = Vue.extend({
+            template:"<p><a :href='LuLisongURL'>{{LuLisongName}}</a></p>",
+            data:function(){
+                return{
+                    LuLisongName:'LuLisong',
+                    LuLisongURL:'../example/helloworld.html'
+                }
+            }
+        });
+        new LuLisongURL().$mount("LuLisong");
+        new LuLisongURL().$mount("#LuLisong")    
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.directive 实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.directive 自定义</h1>
+    <hr>
+    <div id="app">
+        <div v-rousong="color">{{num}}</div>
+        <button @click="add">ADD</button>
+        
+    </div>
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>  
+        
+    
+    <script> 
+         // 原生写法
+        // Vue.directive("rousong",function(el,binding){
+        //     console.log(el)
+        //     el.style="color:"+binding.value;
+        //     console.log(binding);
+        //     console.log(binding.name);
+        //     console.log(binding.value);
+        //     console.log(binding.expression)
+
+        // });
+        // 钩子函数(生命周期)
+        Vue.directive("rousong",{
+            //被绑定
+            bind:function(el,binding){
+                // console.log(el);
+                console.log('1 - bind');
+                el.style= "color:" + binding.value;
+                
+            },
+            //绑定到节点
+            inserted:function(){
+                console.log('2 - inserted');
+            },
+            //组建更新
+            update:function(){
+                console.log('3 - update');
+            },
+            //组建更新完成
+            componentUpdated:function(){
+                console.log('4 - componentUpdated');
+            },
+            //解绑
+            unbind:function(){
+                console.log('5 - unbind');
+            }
+        });
+        //解绑实现
+        function unbind(){
+            app.$destroy();
+        }
+        var app = new Vue({
+        el:'#app',
+        data:{
+            num:10,
+            color:'red'
+        },
+        methods:{
+            add:function(){
+                this.num++
+                console.log(this.num)
+            }
+        }
+    }) 
+    </script>
+</body>
+
+</html>

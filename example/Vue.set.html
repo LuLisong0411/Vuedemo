@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set全局操作</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{count}}
+         <ul>
+             <li v-for="item in arr">{{item}}</li>
+         </ul>
+    </div>
+    <p><button onclick="add()">Add</button></p>
+    <hr>
+    <p>1.由于JavaScript的限制，用app.arr这种方法改变数组下标在vue虚拟DOM中vue是监听不到的，页面不会刷新。Vue.set的意义就是在外部能让vue监听到数组下标的改变。</p>
+    <p>2.由于vue不能能监听到，vue提供了Vue.set方法，可以用Vue.set来改变数组的长度或者直接利用索引设置一个值。</p>
+    <script>
+        function add(){
+            // Vue.set(outData,'count',222)
+            // app.count++
+            // outData.count++,
+            // app.arr[1]='235345'//
+            // Vue.set(app.arr,1,'3847229')
+        }
+        var outData = {
+            count:1,
+            // goods:'car'
+            arr:['111','2222','3333']
+        }
+        var app = new Vue({
+            el:'#app',
+            data:outData,
+        })
+    
+    
+    
+    </script>
+
+
+
+</body>
+</html>
