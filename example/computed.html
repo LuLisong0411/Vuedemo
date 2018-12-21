@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed 实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed 实例</h1>
+    <hr>
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for="item in newList">{{item.title}}-{{item.date}}</li>
+        </ul>
+    </div>
+    <script> 
+        var newsList = [
+            {title:'11月份全国网络违法和不良信息有效举报839.0万件',date:'2018/12/11'},
+            {title:'2018中国网络诚信大会在北京举行',date:'2018/12/12'},
+            {title:'习近平总书记关于网络安全和信息化工作重要论述综述',date:'2018/11/05'},
+            {title:'第五届电信和互联网行业网络安全技能竞赛在京圆满落幕',date:'2018/12/17'},
+            {title:'湖北警方侦破特大“网络水军”非法经营案 涉案资金3000余万元',date:'2018/12/14'},
+            {title:'浙江“红盾网剑”专项执法行动查处大要案涉案金额20多亿元',date:'2018/12/19'},
+            {title:'网游实名制不能只在注册时设门槛',date:'2018/12/18'},
+            {title:'36家互联网企业签订履行社会责任倡议',date:'2018/12/20'},
+        ]
+        var app = new Vue({
+        el:'#app',
+        data:{
+            price:100,
+            newsList:newsList
+        },
+        computed:{
+            newPrice:function(){
+                return this.price = '￥'+ this.price + '元';
+            },
+            newList:function(){
+                return this.newsList.reverse();        //反转
+                // return sortByKey(this.newsList,"date");//排序
+            },
+        }
+    });
+    //数组对象排序
+    function sortByKey(array,key){
+            return array.sort(function(a,b){
+                var x = a[key];
+                var y = b[key];
+                return ((x<y)?-1:((x>y)?1:0));
+            })
+        } 
+    </script>
+</body>
+
+</html>
