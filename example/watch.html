@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch option</h1>
+    <hr>
+    <div id="app">
+        <p>今日温度：{{temperature}}</p>
+        <p>适合穿的衣服：{{wear}}</p>
+        <p>
+            <button @click="add">增加温度</button>
+            <button @click="mius">减少温度</button>
+        </p>
+    </div>
+    <script> 
+        var wear_arry = ["T恤短袖","长衫长裤","夹克长裙","棉衣羽绒服"]
+        var app = new Vue({
+        el:'#app',
+        data:{
+            temperature:18,
+            wear:"夹克长裙"
+        },
+        methods:{
+            add:function(){
+                this.temperature+=2;
+            },
+            mius:function(){
+                this.temperature-=2;
+            }
+        },
+        //逻辑实现
+        // watch:{
+        //     temperature:function(newVal,oldVal){
+        //         if(newVal>=26){
+        //             this.wear = "T恤短袖"
+        //         }else if(newVal>=15 && newVal<26){
+        //             this.wear = "长衫长裤"
+        //         }else if(newVal<15 && newVal>=0){
+        //             this.wear = "夹克长裙"
+        //         }else{
+        //             this.wear = "棉衣羽绒服"
+        //         }
+        //     }
+        // }
+        //数组优化，实际项目开发
+        // watch:{
+        //     temperature:function(newVal,oldVal){
+        //         if(newVal>=26){
+        //             this.wear = wear_arry[0];
+        //         }else if(newVal>=15 && newVal<26){
+        //             this.wear = wear_arry[1];
+        //         }else if(newVal<15 && newVal>=0){
+        //             this.wear = wear_arry[2];
+        //         }else{
+        //             this.wear = wear_arry[3]; 
+        //         }
+        //     }
+        // }
+    });
+    app.$watch('temperature',function(newVal,oldVal){
+        if(newVal>=26){
+            this.wear = wear_arry[0];
+       }else if(newVal>=15 && newVal<26){
+            this.wear = wear_arry[1];
+       }else if(newVal<15 && newVal>=0){
+            this.wear = wear_arry[2];
+       }else{
+            this.wear = wear_arry[3]; 
+       }
+    }) 
+    </script>
+</body>
+
+</html>

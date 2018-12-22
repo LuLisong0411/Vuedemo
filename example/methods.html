@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 实例2.0</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>hello world 实例</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+        <p><button @click="add">add</button></p>
+        <p><button @click="add2()">add2</button></p>
+        <p><button @click="add3(3,$event)">add3</button></p>
+        <!-- 组件里绑定构造器的原始方法要想起作用，必须要用native的方式才能实现。 -->
+        <p><btn @click.native="add4"></btn></p>
+    </div>
+        <!-- 外部组件要想使用构造器里的原始方法，就必须要用构造器名.方法调用才能实现。 -->
+    <p><button onclick="app.add5(5)">外部add</button></p>
+    <script> 
+        var btn = {
+            template:`<button>组件add</button>`
+        }
+        var app = new Vue({
+        el:'#app',
+        data:{
+            count:1,
+        },
+        components:{
+            "btn":btn
+        },
+        methods:{
+            //方法自加1
+            add:function(num){
+                this.count++;
+                console.log(this.count)
+            },
+            //方法传值：num
+            add2:function(num){
+                if(num!=''){
+                    this.count+=num;    //this.count = this.count + num
+                    console.log(this.count)
+                }else{
+                    this.count = this.count+pareseInt(num);
+                    console.log(this.count)
+                    // this.count++
+                }
+            },
+            //event事件,返回的是一个对象，里面的值可以详细知道鼠标的所有信息，可用于开发交互性较强的app.
+            add3:function(num,event){
+                this.count+=num;
+                console.log(event)
+            },
+            add4:function(){
+                this.count+=4;
+            },
+            add5:function(num){
+                this.count+=num;
+            }
+        }
+    }) 
+    </script>
+</body>
+
+</html>

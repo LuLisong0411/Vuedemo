@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mixinsOption</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixinsOption</h1>
+    <hr>
+    <div id="app">
+       {{num}}
+       <p><button @click="add">add</button></p>
+    </div>
+    <hr>
+    <p>项目中增加需求可以使用混入的方式，updated更新的方式有先后顺序，全局的混入>局部的混入>原生的update</p>
+    <script>
+    var addConsole = {
+        updated: function() {
+            console.log("我是局部的混入，数据发生了变化，变成了"+ this.num);
+        },
+    }; 
+    Vue.mixin({
+        updated:function(){
+            console.log("我是全局的混入");
+        }
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        methods:{
+            add:function(){
+                this.num++;
+            }
+        },
+        updated:function(){
+            console.log("我是原生的updated");
+        },
+        mixins:[addConsole]
+    }) 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mixinsOption</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixinsOption</h1>
+    <hr>
+    <div id="app">
+       <!-- {{num}} -->
+       ${num}
+       <p><button @click="add">add</button></p>
+    </div>
+    <hr>
+    <p>1.原生方法>扩展的updated>原生的updated</p>
+    <p>2.扩展方法与原生方法名一样时，扩展方法不执行，原生方法执行。</p>
+    <p>3.在实际项目中有时候会遇见'{{}}'这种插值方式与其他的代码会有冲突不起作用，可以使用'${}'方式插值，在构造器中使用"delimiters:['${','}']"进行启用插值。</p>
+    <script>
+        var extendsObj = {
+            updated:function(){
+                console.log("我是扩展的updated")
+            },
+            add:function(){
+                    this.num++;
+                    console.log("我是原生的方法")
+             }
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+              num:1
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                    console.log("我是原生的方法")
+             }
+            },
+            updated:function(){
+                console.log("我是原生的updated");
+            },
+            extends:extendsObj,
+            delimiters:['${','}']
+        }) 
+    </script>
+</body>
+
+</html>
