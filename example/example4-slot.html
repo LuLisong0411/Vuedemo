@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内置组件-slot</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>内置组件-slot</h1>
+    <hr>
+    <div id="app">
+        <demo>
+            <span slot="netUrl">{{demoData.netUrl}}</span>
+            <span slot="netName">{{demoData.netName}}</span>
+            <span slot="skill">{{demoData.skill}}</span>
+        </demo>
+    </div>
+    <template id="tep">
+        <div>
+            <p>网址：<slot name="netUrl"></slot></p>
+            <p>站名：<slot name="netName"></slot></p>
+            <p>技术类型：<slot name="skill"></slot></p>
+        </div>
+    </template>
+    <hr>
+    <p> Vue 2.0在模板中需要用一个容器把所有的标签包裹起来，不然浏览器只会渲染第一个数据，而且开发者工具会报错。</p>
+    <script> 
+        var demo = {
+            template:"#tep"
+        }
+        var app = new Vue({
+        el:'#app',
+        data:{
+            demoData:{
+                netUrl:'http://www.baidu.com',
+                netName:'百度',
+                skill:'web前端，PHP，MySQL'
+            }
+        },
+
+        components:{
+            "demo":demo
+        }
+    }) 
+    </script>
+</body>
+
+</html>
