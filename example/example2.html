@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example methods demo</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>example methods demo</h1>
+    <hr>
+    <div id="app">
+        {{message}}
+    </div>
+    <p><button onclick="destroy()">销毁</button></p>
+    <p><button onclick="reload()">刷新</button></p>
+    <p><button onclick="rick()">修改数据</button></p>
+    <script> 
+        var RS = Vue.extend({
+            template:`<p>{{message}}</p>`,
+            data:function(){
+                return {
+                    message:"hello world!"
+                };                
+            },
+            mounted () {
+                console.log("mounted 已挂载")
+            },
+            destroyed:function(){
+                console.log('destroyed 已销毁')
+            },
+            updated:function(){
+                console.log('数据更新了')
+            }
+            
+        })
+        var vm = new RS().$mount("#app");
+        function destroy(){
+            vm.$destroy();
+        };
+        function reload(){
+            vm.$forceUpdate();
+        };
+        function rick(){
+            vm.message = " update message info ",
+            vm.$nextTick(function(){
+                console.log("message更新完后我被调用啦！")
+            })
+        }
+    </script>
+</body>
+
+</html>
