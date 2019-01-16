@@ -8,9 +8,13 @@
        <!-- <router-link to ="/hi/hi2">Hi2页面</router-link>  | -->
        <router-link :to ="{name:'hi1',params:{userName:'LuLisong',id:'19970508'}}">Hi1页面</router-link>  |
        <router-link :to ="{name:'hi2',params:{url:'https://github.com/LuLisong0411',id:'951170572'}}">Hi2页面</router-link>  |
+       <router-link to ="/">Hi3页面</router-link>  |
+       <router-link to ="/">Hi4页面</router-link>  |
     </div>
     <p>{{ $route.name }}</p>
     <router-view></router-view>
+    <router-view name="left" style="float:left;width:50%;height:500px;background-color:#ff00ff"></router-view>
+    <router-view name="right" style="float:right;width:50%;height:500px;background-color:#c0c"></router-view>
     
   </div>
 </template>

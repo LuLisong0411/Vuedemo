@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Hi from '@/components/Hi'
 import hi1 from '@/components/hi1'
 import hi2 from '@/components/hi2'
+import hi3 from '@/components/hi3'
+import hi4 from '@/components/hi4'
 
 Vue.use(Router)
 
@@ -12,7 +14,19 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      components:{
+        default: HelloWorld,
+        left:hi3,
+        right:hi4
+      }
+    },{
+      path: '/LuLisong',
+      name: 'HelloWorld',
+      components:{
+        default: HelloWorld,
+        left:hi4,
+        right:hi3
+      }
     },{
       path:'/Hi',
       component:Hi ,
