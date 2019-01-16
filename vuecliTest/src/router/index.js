@@ -14,7 +14,7 @@ export default new Router({
     },{
       path:'/Hi',
       name:'Hi',
-      componen:Hi
+      component:Hi 
     }
   ]
 })
