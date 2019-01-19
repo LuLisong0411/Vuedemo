@@ -6,6 +6,7 @@ import hi1 from '@/components/hi1'
 import hi2 from '@/components/hi2'
 import hi3 from '@/components/hi3'
 import hi4 from '@/components/hi4'
+import hi5 from '@/components/hi5'
 
 Vue.use(Router)
 
@@ -21,7 +22,7 @@ export default new Router({
       }
     },{
       path: '/LuLisong',
-      name: 'HelloWorld',
+      name: 'HelloWorld1',
       components:{
         default: HelloWorld,
         left:hi4,
@@ -37,6 +38,9 @@ export default new Router({
         {path:'hi1',name:'hi1',component:hi1},
         {path:'hi2',name:'hi2',component:hi2}
       ]
+    },{
+      path:'/hi5/:newsId/:newsTitle',
+      component:hi5,
     }
   ]
 })

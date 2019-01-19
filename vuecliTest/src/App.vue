@@ -10,6 +10,7 @@
        <router-link :to ="{name:'hi2',params:{url:'https://github.com/LuLisong0411',id:'951170572'}}">Hi2页面</router-link>  |
        <router-link to ="/">Hi3页面</router-link>  |
        <router-link to ="/">Hi4页面</router-link>  |
+       <router-link to ="/hi5/100/To best">Hi5页面</router-link>  |
     </div>
     <p>{{ $route.name }}</p>
     <router-view></router-view>
