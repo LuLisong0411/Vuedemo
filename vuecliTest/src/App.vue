@@ -13,6 +13,7 @@
        <router-link to ="/hi5/100/To best">Hi5页面</router-link>  |
        <router-link to ="/goHome">返回首页</router-link>  |
        <router-link to ="/goHi5/101/I love vue.js">返回hi5</router-link>  |
+       <router-link to ="/alias">alias</router-link>  |
     </div>
     <p>{{ $route.name }}</p>
     <router-view></router-view>

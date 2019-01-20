@@ -37,7 +37,8 @@ export default new Router({
         // {path:'hi2',name:'HelloWorld/hi/hi2',component:hi2},
         {path:'hi1',name:'hi1',component:hi1},
         {path:'hi2',name:'hi2',component:hi2}
-      ]
+      ],
+      alias:'/alias'
     },{
       path:'/hi5/:newsId(\\d+)/:newsTitle',//正则表达式将Id转化为数字
       component:hi5,
@@ -47,6 +48,9 @@ export default new Router({
     },{
       path:'/goHi5/:newsId(\\d+)/:newsTitle',
       redirect:'/hi5/:newsId(\\d+)/:newsTitle'
+    },{
+      path:'hi1',
+      component:hi1,
     }
   ]
 })
