@@ -41,6 +41,12 @@ export default new Router({
     },{
       path:'/hi5/:newsId(\\d+)/:newsTitle',//正则表达式将Id转化为数字
       component:hi5,
+    },{
+      path:'/goHome',
+      redirect:'/'
+    },{
+      path:'/goHi5/:newsId(\\d+)/:newsTitle',
+      redirect:'/hi5/:newsId(\\d+)/:newsTitle'
     }
   ]
 })
