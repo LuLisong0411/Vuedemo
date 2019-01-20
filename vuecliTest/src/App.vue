@@ -16,9 +16,15 @@
        <router-link to ="/alias">alias</router-link>  |
     </div>
     <p>{{ $route.name }}</p>
-    <router-view></router-view>
-    <router-view name="left" style="float:left;width:50%;height:500px;background-color:#ff00ff"></router-view>
-    <router-view name="right" style="float:right;width:50%;height:500px;background-color:#c0c"></router-view>
+      <!-- 过渡效果先出后进 -->
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+    <!-- <transition name="fade" mode="in-out">过渡效果先进后出
+      <router-view></router-view>
+    </transition> -->
+      <router-view name="left" style="float:left;width:50%;height:500px;background-color:#ff00ff"></router-view>
+      <router-view name="right" style="float:right;width:50%;height:500px;background-color:#c0c"></router-view>
     
   </div>
 </template>
@@ -37,5 +43,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.fade-enter{
+  opacity:0;
+}
+.fade-enter-active{
+  transition:opacity .8s;
+}
+.fade-leave{
+  opacity:1;
+}
+.fade-leave-active{
+  opacity:0;
+  transition:opacity .8s;
 }
 </style>
