@@ -39,7 +39,7 @@ export default new Router({
         {path:'hi2',name:'hi2',component:hi2}
       ]
     },{
-      path:'/hi5/:newsId/:newsTitle',
+      path:'/hi5/:newsId(\\d+)/:newsTitle',//正则表达式将Id转化为数字
       component:hi5,
     }
   ]
