@@ -2,6 +2,11 @@
   <div id="app">
     <img src="./assets/logo.png">
     <div>
+       <button @click="go">前进</button>
+       <button @click="goBack">后退</button>
+       <button @click="goHome">返回首页</button>
+    </div>
+    <div>
        <router-link to ="/">首页</router-link> | 
        <router-link to ="/hi">Hi页面</router-link>  |
        <!-- <router-link to ="/hi/hi1">Hi1页面</router-link>  | -->
@@ -32,7 +37,18 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods:{
+    goBack(){
+      this.$router.go(-1);
+    },
+    go(){
+      this.$router.go(1);
+    },
+    goHome(){
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
