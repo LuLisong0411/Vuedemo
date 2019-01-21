@@ -7,10 +7,13 @@ import hi2 from '@/components/hi2'
 import hi3 from '@/components/hi3'
 import hi4 from '@/components/hi4'
 import hi5 from '@/components/hi5'
+import Error from '@/components/Error'
 
 Vue.use(Router)
 
 export default new Router({
+  // mode:'hash',
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -51,6 +54,9 @@ export default new Router({
     },{
       path:'hi1',
       component:hi1,
+    },{
+      path:'*',
+      component:Error
     }
   ]
 })
