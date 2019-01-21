@@ -13,6 +13,14 @@ export default {
         return{
             msg:'I am hi5 page.'
         }
+    },
+    beforeRouteEnter:(to, from, next) => {
+        console.log('准备进入Hi5 page');
+        next();
+    },
+    beforeRouteLeave (to, from, next) {
+        console.log('准备离开Hi5 page');
+        next();
     }
 }
 </script>

@@ -45,6 +45,12 @@ export default new Router({
     },{
       path:'/hi5/:newsId(\\d+)/:newsTitle',//正则表达式将Id转化为数字
       component:hi5,
+      //配置文件里写钩子函数
+      // beforeEnter:(to,from,next)=>{
+      //   console.log(to);
+      //   console.log(from);
+      //   next();//next相当于开关，实现跳转，里面可以带参数（true,false,对象）
+      // }
     },{
       path:'/goHome',
       redirect:'/'
