@@ -65,13 +65,13 @@ export default {
   opacity:0;
 }
 .fade-enter-active{
-  transition:opacity .8s;
+  transition:opacity .7s;
 }
 .fade-leave{
   opacity:1;
 }
 .fade-leave-active{
   opacity:0;
-  transition:opacity .8s;
-}
+  transition:opacity .7s;
+} 
 </style>
