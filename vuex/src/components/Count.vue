@@ -1,18 +1,26 @@
 <template>
-    <div>
+    <!-- <div>
         <h2>{{msg}}</h2>
         <h2>{{$store.state.count}}-{{count}}</h2>
         <p>
             <button @click="$store.commit('add')">+</button>
             <button @click="$store.commit('reduce')">-</button>
         </p>
+    </div> -->
+    <!-- 简写上述方式以及改变mutations的用法(传参) -->
+    <div>
+        <h2>{{msg}}</h2>
+        <h2>{{count}}</h2>
+        <p>
+            <button @click="$store.commit('add',10)">+</button>
+            <button @click="reduce">-</button>
+        </p>
     </div>
-    
 </template>
 
 <script>
 import store from '@/vuex/store';
-import { mapState } from 'vuex'
+import { mapState , mapMutations} from 'vuex'
 export default {
     data() {
         return {
@@ -31,12 +39,13 @@ export default {
     //     count:state=>state.count
     // })
     //es5的原生写法
-    computed:mapState({
-        count:function(state){
-            return state.count
-        }
-    }),
+    // computed:mapState({
+    //     count:function(state){
+    //         return state.count
+    //     }
+    // }),
     //实际开发中使用的数组方式
-    // computed: mapState(['count'])
+    computed: mapState(['count']),
+    methods: mapMutations(['add','reduce'])
 }
 </script>
