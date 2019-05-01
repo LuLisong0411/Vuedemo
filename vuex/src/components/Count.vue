@@ -20,7 +20,7 @@
 
 <script>
 import store from '@/vuex/store';
-import { mapState , mapMutations} from 'vuex'
+import { mapState , mapMutations, mapGetters} from 'vuex'
 export default {
     data() {
         return {
@@ -45,7 +45,17 @@ export default {
     //     }
     // }),
     //实际开发中使用的数组方式
-    computed: mapState(['count']),
+    // computed: mapState(['count']),
+    //...es6扩展运算符
+    computed:{
+        ...mapState(['count']),
+        // count:function(){
+        //     return this.$store.getters.count;
+        // }
+        //上一种方式的简写
+        ...mapGetters(['count'])
+
+    },
     methods: mapMutations(['add','reduce'])
 }
 </script>
